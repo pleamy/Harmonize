@@ -6,6 +6,7 @@
     <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="lib/underscore-min.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <link href="dist/sp-bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 
@@ -14,7 +15,7 @@
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html"><span>My&nbsp;Starred&nbsp;Items</span></a>
+          <a class="navbar-brand" href="index.html"><span>Harmonize</span></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul id="options" class="nav navbar-nav navbar-right">
@@ -30,7 +31,7 @@
     <div id="search" class="hero-unit">
        <div class="container">
           <div id="intro">
-            <h1> My Starred Items</h1>
+            <h1> Harmonizing...</h1>
             <p class="lead">This app demonstrates how to get the starred items for a user</p>
             <div id="search-form" class="form-inline">
                 <span class="xform-control">
@@ -65,6 +66,8 @@
 </div>
 
 <script>
+
+
 "use strict";
 
 var accessToken = null;
@@ -93,7 +96,7 @@ function authorizeUser() {
         '&scope=playlist-read-private' +
         '&redirect_uri=' + encodeURIComponent(redirect_uri);
     document.location = url;
-}
+} 
 
 function parseArgs() {
     var hash = location.hash.replace(/#/g, '');
@@ -115,7 +118,7 @@ function fetchCurrentUserProfile(callback) {
 
 function fetchStarredItems(id, callback) {
     var url = 'https://api.spotify.com/v1/users/' + id + '/starred';
-	console.log("The user's ID is " + id + ".")
+	// console.log("The user's ID is " + id + ".")
     callSpotify(url, playlistFields, callback);
 }
 
@@ -136,9 +139,16 @@ function callSpotify(url, data, callback) {
 }
 
 function showTracks(tracks) {
+
+	
     var list = $("#item-list");
 
-    console.log('show tracks', tracks);
+
+		
+		var entries = d3.entries(tracks.items);
+		// console.log('d3 entries', entries);
+
+    // console.log('show tracks', tracks);
     if (tracks.offset == 0) {
         $("#main").show();
         $("#intro").hide();
@@ -147,12 +157,28 @@ function showTracks(tracks) {
     }
     _.each(tracks.items, function(item) {
         var artistName = item.track.artists[0].name;
+		var spotify_artist_id = item.track.artists[0].uri;
 		var track_id = item.track.id;
-        var itemElement = $("<div>").text(item.track.name + ' - ' + artistName);
-        list.append(itemElement);
-		// console.log(artistName);
-		// console.log(track_id);
-		
+		var genre;
+		var artist;
+		var div;
+		var itemElement;
+
+		var echonest = "http://developer.echonest.com/api/v4/artist/profile?api_key=V67QTPVRZDSNCC4AW&id=spotify:artist:" + spotify_artist_id + "&bucket=genre";
+		  $.getJSON( echonest, {
+		    format: "json"
+		  })
+		    .done(function(data) {
+				// console.log(data);
+				genre = data.response.artist.genres;
+				console.log(genre);
+				itemElement = $("<div>").text(artistName).css("font-weight", "bold");
+								list.append(itemElement);	
+								$(genre).each(function(index){
+									 list.append('<div id="div'+ index +'" />' + genre[index].name);
+								})	
+				
+		    });
     });
 
     if (tracks.next) {
@@ -161,6 +187,10 @@ function showTracks(tracks) {
         });
     }
 }
+
+
+
+
 
 $(document).ready(
 
@@ -192,8 +222,66 @@ $(document).ready(
                 authorizeUser();
             });
         }
+
+
+
+
+
+
     }
+
 );
+
+
+
+// $.ajax({
+// 
+//   // The 'type' property sets the HTTP method.
+//   // A value of 'PUT' or 'DELETE' will trigger a preflight request.
+//   type: 'GET',
+// 
+//   // The URL to make the request to.
+//   url: 'http://developer.echonest.com/aVRZDSNCC4AW&id=spotify:artist:1Cs0zKBU1kc0i8ypK3B9ai&bucket=genre',
+// 
+//   // The 'contentType' property sets the 'Content-Type' header.
+//   // The JQuery default for this property is
+//   // 'application/x-www-form-urlencoded; charset=UTF-8', which does not trigger
+//   // a preflight. If you set this value to anything other than
+//   // application/x-www-form-urlencoded, multipart/form-data, or text/plain,
+//   // you will trigger a preflight request.
+//   contentType: 'text/plain',
+// 
+//   xhrFields: {
+//     // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
+//     // This can be used to set the 'withCredentials' property.
+//     // Set the value to 'true' if you'd like to pass cookies to the server.
+//     // If this is enabled, your server must respond with the header
+//     // 'Access-Control-Allow-Credentials: true'.
+//     withCredentials: false
+//   },
+// 
+//   headers: {
+//     // Set any custom headers here.
+//     // If you set any non-simple headers, your server must include these
+//     // headers in the 'Access-Control-Allow-Headers' response header.
+//   },
+// 
+//   success: function() {
+//     // Here's where you handle a successful response.
+// 	console.log("works")
+//   },
+// 
+//   error: function() {
+//     // Here's where you handle an error response.
+//     // Note that if the error was due to a CORS issue,
+//     // this function will still fire, but there won't be any additional
+//     // information about the error.
+// 		console.log("Something went wrong...")
+//   }
+// });
+
+
+
 
 </script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
