@@ -1,40 +1,282 @@
-.hero-unit {
+* {
+	font-family: 'Lato', 'Raleway', sans-serif;
+
+}
+
+
+
+body {
+ /* background-color: #282828;*/
+}
+#harm-body {
+  text-align: center;
+/*  padding-top: 10%;*/
+}
+.welcome {
+  font-family: 'proxima_nova_scosf_rgregular';
+  text-align: center;
+  height: 100vh;
+  display: inline-block;
+  /*background-color: #e5e5e5;*/
+}
+.logo-text {
+  margin-top: -60px;
+}
+.login-box {
+  position: absolute;
+  height: 360px;
+  width: 400px;
+  background-color: #ff8000; /*#f89a1c;*/
+  color: #fff;
+  text-align: center;
+  font-weight: 400;
+  /*margin-left: 30%;*/
+  /*margin-right: auto;*/
+  padding: 40px 0px 0px 0px;
+  margin-top: 15%;
+  border-radius: 20px;
+  left: 15%;
+}
+.login-banner {
+  position: absolute;
+  background-color: #f89a1c;
+  height: 100%;
+  width: 280px;
+  top: 0px;
+  right: 10%;
+  /*margin-right: 30%;*/
+}
+h1.harm-h1 {
+  /*font-family: 'Montserrat';*/
+  /*color: #0097BD;*/
+  text-transform: uppercase;
+  font-size: 32px;
+  letter-spacing: 1px;
+  /*font-weight: 100;*/
+}
+.login-subtext {
+  font-color: #999;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding-bottom: 15%;
+  font-weight: 300px;
+  text-transform: uppercase;
+ /* margin-left: 5vh;*/
+  /*text-align: left;
+  margin-top: -1vh;
+  margin-left: 40px;*/
+}
+button.harm-center {
+  height: 50px;
+  width: 200px;
+  /*color: #0097BD;*/
+  color: #f89a1c;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  background-color: #fff;
+   margin-top: -200px; 
+  margin-bottom: 10px;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+button.harm-center:hover {
+  color: #fff;
+  background-color: #0097BD;
+}
+
+
+.banner {
+  text-align: center;
+  color: #fff;
+}
+ul {
+  list-style: none;
+  display: inline-block;
+}
+li {
+  text-align: center;
+  color: #fff;
+  padding-bottom: 15px;
+}
+li.created-by {
+  margin-bottom: 15%;
+}
+
+
+
+
+
+.clearfix:after {
+	visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+.clearfix {
+	display: inline-block;
+}
+html .clearfix {
+	height: 1%;
+}
+.clearfix {
+	display: block;
+}
+
+#main {
+	background-color: #fff;
+}
+nav {
+	position: absolute;
+	top: 0px;
+	-webkit-box-shadow: 	4px 0px 8px #a5a5a5;  
+  	-moz-box-shadow: 		4px 0px 8px #a5a5a5;  
+  	box-shadow: 			4px 0px 8px #a5a5a5;
+  	background-color: #ff8000;
+}
+nav ul {
+  list-style: none;
+}
+nav.harm-left {
+  left: 0px;
+  /*background-color: #999;*/
+  width: 25%;
+  bottom: 0px;
+}
+nav.harm-left .stats-top {
+  font-family: 'Raleway';
+  font-weight: 400;
+  margin: 8vh 0 2vh 0;
+  font-size: 20px;
+  /*font-weight: 500;*/
+  text-align: left;
+  letter-spacing: 2px;
+  
+}
+nav.harm-left li.stats {
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-size: 18px;
+  text-align: left;
+ /* margin-left: 1vh;*/
+  letter-spacing: 0.5px;
+  padding-bottom: 3px;
+}
+span.bold {
+  font-weight: 500;
+  /*text-align: right;*/
+}
+/*nav.harm-right {
+  right: 0px;
+  background-color: #282828;
+  color: #fff;
+  width: 20%;
+  height: 8vh;
+}*/
+/*nav.harm-right li {
+  list-style: none;
+  /*padding: 15px;*/
+/*  display: inline;*/
+/*}
+nav.harm-right {
+  /*left: 85%;*/
+  /*margin-top: 5vh;
+  color: #282828;
+  font-size: 16px;
+
+}*/
+/*span.harm-circle {
+  right: 10%;
+  margin-top: 1vh;
+  background-color: #282828;
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  color: #282828;
+  display: inline-block;
+  margin-right: 2vh;
+ /* font-size: 16px;*/
+/*}
+span.circle-text {
+  display: inline;
+  margin-right: 80%;
+}
+*/
+
+#main {
+    margin-top:0px;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    text-align:center;
+    display:none;
+    font-size:22px;
+}
+.harm-logo {
+  font-family: 'proxima_nova_scosf_rgregular';
+  letter-spacing: 1px;
+  margin-top: 4vh;
+  text-align: left;
+  font-size: 39px;
+  margin-left: 40px;
+}
+.harm-subtext {
+  font-family: 'proxima_nova_scosf_rgregular';
+  font-color: #999;
+  font-size: 13px;
+  letter-spacing: 2px;
+ /* margin-left: 5vh;*/
+  text-align: left;
+  margin-top: -1vh;
+	margin-left: 40px;
+}
+button.harm-search {
+  border: 1px solid #0097BD;
+  border-radius: 50px;
+  width: 400px;
+  height: 30px;
+  margin-top: 8vh;
+  background-color: #fff;
+}
+button.harm-search:focus {
+
+}
+
+#genre_title{
+	position: absolute;
+	right: 0;
+	width: 300px;
+	height: 50px;
+	top: 50%;
+	margin-top: -50px;
+}
+
+
+/*.hero-unit {
   margin-top:66px;
   padding-bottom:30px;
   color: #fff;
   background-color: #84BD00;
   text-align:center;
 }
-
 .hero-unit h1 {
     font-size:64px;
 }
-
 .navbar-nav li a {
     cursor:pointer;
 }
-
-#main {
-    margin-top:20px;
-    margin-left:auto;
-    margin-right:auto;
-    width:90%;
-    text-align:center;
-    display:none;
-    font-size:22px;
-}
-
 #footer {
     margin-top:10px;
     margin-left:auto;
     margin-right:auto;
     text-align:center;
 }
-
 #main h2 {
     font-size:32px;
 }
-
 #info {
     margin-top:20px;
     margin-left:10px;
@@ -43,5 +285,121 @@
     margin-bottom:10px;
     height:32px;
     font-size:24px;
+}*/
+
+
+
+
+/*  SEARCH THINGY */
+
+form {
+    /*background: #222 url(http://f.cl.ly/items/091X0J0C1q0H2D2z143n/bg.jpg) no-repeat top left;*/
+	 background: transparent;
+    background-clip: padding-box;
+    
+/*    border-radius:         3px;
+    -moz-border-radius:    3px;
+    -o-border-radius:      3px;
+    -webkit-border-radius: 3px;
+    
+    box-shadow:         0 1px 5px #000;
+    -moz-box-shadow:    0 1px 5px #000;
+    -o-box-shadow:      0 1px 5px #000;
+    -webkit-box-shadow: 0 1px 5px #000;*/
+    
+    height: 32px;
+    margin: 50px auto;
+    padding: 0;
+    width: 500px;
+}
+
+input {
+    background: transparent;
+    background: rgba(163, 135, 106, 0.15);
+    background-clip: padding-box;
+
+    font-family: 'Raleway';
+	font-size: .8em;
+	color: rgba(0,0,0, .5);
+    
+    border: none;
+    border-radius:         26px;
+    -moz-border-radius:    26px;
+    -o-border-radius:      26px;
+    -webkit-border-radius: 26px;
+    
+    box-shadow:         inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow:    inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -o-box-shadow:      inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), 
+                        0 1px 0 rgba(255, 255, 255, 0.5), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.3), 
+                        0 0 40px rgba(255, 255, 255, 0.3);
+    
+    color: #333;
+    height: 38px;
+    margin-top: 0px;
+	margin-bottom: 20px;
+    outline: none;
+    padding: 0 20px 0 35px;
+    
+    transition:         all .1s linear;
+    -moz-transition:    all .1s linear;
+    -o-transition:      all .1s linear;
+    -webkit-transition: all .1s linear;
+    
+    width: 285px;
+}
+
+
+
+input:focus {
+    background: transparent;
+    background: rgba(163, 135, 106, 0.2);
+
+    box-shadow:         inset 0 0 5px rgba(0, 0, 0, 0.2), 
+                        0 1px 0 rgba(255, 255, 255, 0.7), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow:    inset 0 0 5px rgba(0, 0, 0, 0.2), 
+                        0 1px 0 rgba(255, 255, 255, 0.7), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(255, 255, 255, 0.5);
+    -o-box-shadow:      inset 0 0 5px rgba(0, 0, 0, 0.2), 
+                        0 1px 0 rgba(255, 255, 255, 0.7), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2), 
+                        0 1px 0 rgba(255, 255, 255, 0.7), 
+                        inset 0 1px 2px rgba(0, 0, 0, 0.4), 
+                        0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+label {
+  background: transparent url(http://f.cl.ly/items/2a2Z0V0L0J1p3V082d3r/icon-search.png) no-repeat top left;
+  cursor: pointer;
+  display: block;
+  height: 30px;
+	left: 115px;
+	position: relative;
+	text-indent: -99999px;
+	top: -49px;
+	width: 30px;
+}
+
+#picid{
+  /*color: #aa0000;*/
+	width: 200px;
+	height: 222px;
+	margin: 0 auto;
 }
 

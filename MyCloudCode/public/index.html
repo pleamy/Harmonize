@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <html lang="en">
@@ -6,67 +7,104 @@
 <head>
     <title> Harmonize!!! </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link type="text/css" href="styles.css" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="lib/underscore-min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
+	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400|Raleway:400,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
     <link href="dist/sp-bootstrap.min.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="Proxima_Nova/stylesheet.css" rel="stylesheet"/>
+    <link type="text/css" href="Gotham/stylesheet.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html"><span>Harmonize</span></a>
+
+<div id="harm-body">
+	
+<!-- 	<div class="welcome" id="login">
+		<input type="text" class="harm-search" id="search" autocomplete="off">
+	    <label for="username">username</label>
+	</div> -->
+	
+    <div class="welcome clearfix" id="go">
+    	<div class="login-box">
+    		<img class="logo" src="harmonize_logo.png"></img>
+    		<img class="logo-text" src="harmonize_text.png"></img>
+        	<!-- <h1 class="harm-h1">harmonize</h1> -->
+        	<!-- <div class="login-subtext">your musical fingerprint</div> -->
+        	<button class="btn btn-info btn-large harm-center" type="button"> enter </button>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul id="options" class="nav navbar-nav navbar-right">
-                <li><a class="option" 
-                href="http://musicmachinery.com/2014/06/26/fetching-my-starred-items-from-spotify/" 
-                id='show-about'>About</a></li>
-            </ul>
-        </div>
+        <div class="login-banner">
+        	<!-- <h2 class="banner">Welcome to Harmonize</h2> -->
+        	<!-- <ul>
+        		<li>View your musical fingerprint.</li>
+        		<li>View your musical fingerprint.</li>
+        		<li>View your musical fingerprint.</li>
+        		<li class="created-by">Created by Amy Le and Vincent Snagg.</li>
+        	</ul> -->
+       	</div>
     </div>
 </div>
 
+<div id="main" class="container clearfix">
+    <nav class="harm-left">
+    	<div class="harm-logo">
+    		<img class="logo" src="harmonize_logo.png"></img><br>
+    		<img class="logo-text" src="harmonize_text.png"></img>
+    	</div>
+	
+		<ul>
+	        <li class="stats-top">Your Stats</li>
+	        <li class="stats">rhythm & blues: <span class="bold">23%</span></li>
+	        <li class="stats">alternative: <span class="bold">18%</span></li>
+	        <li class="stats">classic rock: <span class="bold">16%</span></li>
+    	</ul>
+		
+	</nav>
+	
+<div id="genre_title"></div> 
 
 
-<div id="search" class="hero-unit">
-    <div class="container">
-        <div id="intro">
-            <h1> Harmonizing...</h1>
-            <p class="lead">This app demonstrates how to get the starred items for a user</p>
-            <div id="search-form" class="form-inline">
-                <span class="xform-control">
-                    <button class="btn btn-info btn-large" id='go' type="button">  Show My Starred
-                    Items</button>
-                </span>
-            </div>
-            <div id="info"> </div>
-        </div>
+   <!--  <nav class="harm-right">
+       <li><!-- <span class="harm-circle"></span> <span class="circle-text">clear</span></li>
+       <li><span class="harm-circle"></span><span class="circle-text">refresh</span></li>
+       <li><span class="harm-circle"></span><span class="circle-text">logout</span></li>
+    </nav> -->
+
+<form>        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+		<input style="display:none" type="text" name="fakeusernameremembered"/>
+		<input style="display:none" type="password" name="fakepasswordremembered"/>
+		<input style="display:none" type="text" class="harm-search">
+		<!-- Real Fields -->
+		<input type="text" class="harm-search" id="search" autocomplete="off">
+        <label for="search">Search</label>
+</form>
+
+<!--     <div class="harm-stats">
+        <ul class="harm-left">
+            <li>Genre 1</li>
+            <li>Genre 2</li>
+        </ul>
+    </div> -->
+
+    
+    <div id="item-list"> 
     </div>
-</div>
 
-<div id="main" class="container">
-    <h1> Visualizating Your Music... </h1> <!-- Starred Items for <span id="who"> </span> -->
-    <hr>
-    <div id="item-list"> </div>
-</div>
-
-<div id="footer">
-    <hr>
-    <div class="container">
-        <small>
-            <p class="muted credit">Created by <a href="http://twitter.com/plamere">@plamere</a>. 
-            Powered by <a href="http://spotify.com">Spotify</a>. Source on <a
-            href="https://github.com/plamere/MyStarredItems">github</a>.
-            </p>
-        </small>
-    </div>
-</div>
 
 
 <script>
+
+Parse.initialize("PtXNUBqQSWiPe2A0EnYgo6BIhru18cN0rJslkGNx", "zrTKKzn9GFqMCKsbcLoQPQIqBLe1f6oprK0I9bpK");
+
+var ParsePlaylistData = Parse.Object.extend("ParsePlaylistData");
+var parsePlaylistData = new ParsePlaylistData();
+
+
 
 var svgContainer;
 var svg;
@@ -75,60 +113,116 @@ var colors;
 var nodes;
 var d3_data;
 var force;
+var global_user_id;
 
 $(document).ready(
 
     function() {
         var args = parseArgs();
-
         if ('access_token' in args) {
             accessToken = args['access_token'];
+			console.log(accessToken);
             $("#go").hide();
             info('Getting your user profile');
             fetchCurrentUserProfile(function(user) {
                 if (user) {
-                    $("#who").text(user.id);
-                    info('Getting your starred playlist');
-                    fetchStarredItems(user.id, function(data) {
-                        if (data) {
+	
+	
+					var Parseuser = new Parse.User();
+
+					Parseuser.set("username", "" + user.email + "");
+					
+					Parseuser._sessionToken = accessToken;
+									// user.set("password", "password");
+					
+	
+					Parse.User.become(accessToken).then(function (Parseuser) {	
+					  // The current user is now set to user.
+					}, function (error) {
+						console.log("Couldn't be validated");
+					  // The token could not be validated.
+					});
+
+					// 
+					// 				// other fields can be set just like with Parse.Object
+					// 				user.set("phone", "415-392-0202");
+					// 
+					// 				user.signUp(null, {
+					// 				  success: function(user) {
+					// 				    // Hooray! Let them use the app now.
+					// 				  },
+					// 				  error: function(user, error) {
+					// 				    // Show the error message somewhere and let the user try again.
+					// 				    alert("Error: " + error.code + " " + error.message);
+					// 				  }
+					// 				});
+	
+	
+	
+					console.log(user);
+					global_user_id = user.id;
+					parsePlaylistData.save({userName: "" + user.display_name + ""});
+					// parsePlaylistData.save({userId: "" + user.id + ""});
+					var name = user.display_name.split(" ", 2); //Store the first and last name in an array
+					
+					var firstName = name[0]; // set the first name as variable
+                    $("#who").text(firstName); //only display the first name
+                    // info('Getting your starred playlist');
+					
+					
+					// Forbidden Image 
+					
+					// fetchDisplayPics(user.id, function(data){
+					// 	console.log(data.images[0].url);
+					// 	$("#picid").html("<img src=" + data.images[0].url + "/>")
+					// 	
+					// })
+					
+					fetchPlaylists(user.id, function(data) {
+					    if (data) {
 							// console.log(data);
+							// showPlaylistData(data);
 							
 							
-							svg = d3.select("#main").append("svg:svg").attr("width",700).attr("height",700);
-						    colors = d3.scale.category20();
-
-							force = d3.layout.force()
-						            .gravity(0.1)
-						            .charge(-30)
-						            .size([700, 700]);
 							
-							nodes = force.nodes(), centers = [];
+						} else {
+					        error("Trouble getting the playlists");
+					    }
+					});
+					
+					
+  					fetchStarredItems(user.id, function(data) {
+  						if (data) {
+  							// console.log(data);	
+  							svg = d3.select("#main").append("svg:svg").attr("width",600).attr("height", 600);
+  							colors = d3.scale.category20();
+  							force = d3.layout.force().gravity(0.13)
+  													 .charge(-30)
+  													 .size([600, 600]);
+  							nodes = force.nodes(), centers = [];
+  							// WORKS: USES MAP
+  							// svgContainer = d3.select("#main").append("svg").attr("width",800).attr("height",800)
+  							showTracks(data.tracks);
+							
+							// Save Data to Parse
+							
+							// var TestObject = Parse.Object.extend("TestObject");
+							// var testObject = new TestObject();
+							// testObject.save({foo: "bar"}).then(function(object) {
+							//   alert("yay! it worked");
+							// });
+							
 						
-
-
-
-						    
-
-							// WORKS: USES MAP
-
-							// svgContainer = d3.select("#main").append("svg").attr("width",800).attr("height",800)
+							// console.log(data);
+							parsePlaylistData.save(data.tracks);
+							
+					
 							
 							
 							
-                            showTracks(data.tracks);
-							
-
-
-
-
-
-
-							
-
-
-                        } else {
-                            error("Trouble getting the starred playlist");
-                        }
+  						} else {
+  							error("Trouble getting the starred playlist");
+  						}
                     });
                 } else {
                     error("Trouble getting the user profile");
@@ -143,30 +237,26 @@ $(document).ready(
     }
 );
 
-
-
-
 "use strict";
-
-
 
 var accessToken = null;
 var playlistFields = {
     fields:'tracks.offset,tracks.next,tracks.items(track(id,name,artists))'
 };
-
+var playlistFields_2 = {};
+var playlistFields_3 = {};
+var playlistFields_4 = {};
 var trackFields = {
     fields:'offset,next,items(track(name,artists))'
 };
+var trackFields_2 = {};
 
 function error(msg) {
     info(msg);
 }
-
 function info(msg) {
     $("#info").text(msg);
 }
-
 function authorizeUser() {
     var client_id = '60516544c7cd4725a214c38012bd7fda';
     var redirect_uri = 'http://harmonize.parseapp.com';
@@ -177,7 +267,6 @@ function authorizeUser() {
         '&redirect_uri=' + encodeURIComponent(redirect_uri);
     document.location = url;
 } 
-
 function parseArgs() {
     var hash = location.hash.replace(/#/g, '');
     var all = hash.split('&');
@@ -202,6 +291,22 @@ function fetchStarredItems(id, callback) {
     callSpotify(url, playlistFields, callback);
 }
 
+function fetchPlaylists(id, callback) {
+    var url = 'https://api.spotify.com/v1/users/' + id + '/playlists?offset=0&limit=50';
+	// console.log("The user's ID is " + id + ".")
+    callSpotify(url, playlistFields_2, callback);
+}
+
+function fetchPlaylistItems(id, callback) {
+    var url = 'https://api.spotify.com/v1/users/' + global_user_id + '/playlists/' + playlist_id + '/tracks';
+    callSpotify(url, playlistFields_3, callback);
+}
+
+function fetchDisplayPics(id, callback) {
+	var url = 'https://api.spotify.com/v1/me';
+	callSpotify(url, playlistFields_4, callback);	
+}
+
 function callSpotify(url, data, callback) {
     $.ajax(url, {
         dataType: 'json',
@@ -218,23 +323,102 @@ function callSpotify(url, data, callback) {
     });
 }
 
+// START ONCE FUNCTIONING CODE
+
+// function showPlaylistData(playlists) {  
+// 	
+// 	var genre
+// 	var playlist_list = playlists.items;
+// 	var playlist_count = playlists.total;
+// 	
+// 	
+// 	$(playlist_list).each(function(i){
+// 		playlist_id = playlist_list[i].id;
+// 		
+// 		if (playlist_list[i].public) {
+// 					console.log(playlist_list[i]);
+// 
+// 		
+// 		fetchPlaylistItems(playlist_id, function(data) {
+// 		    if (data) {
+// 				// console.log(data);	
+// 				
+// 				
+// 				var playlist_data = data.items;
+// 		
+// 				
+// 				// $(playlist_data).each(function(i){
+// 				// 	
+// 				// 	var spotify_artist_id = playlist_data[i].track.artists[0].id;
+// 				// 	var echonest = "http://developer.echonest.com/api/v4/artist/profile?api_key=V67QTPVRZDSNCC4AW&id=spotify:artist:" + spotify_artist_id + "&bucket=genre";
+// 				// 	  
+// 				// 	$.getJSON( echonest, {
+// 				// 	    format: "json"
+// 				// 	  })
+// 				// 	    .done(function(data) {
+// 				// 		genre = data.response.artist.genres;
+// 				// 
+// 				// 			$(genre).each(function(i){
+// 				// 
+// 				// 				 genreList.push(genre[i].name);
+// 				// 
+// 				// 
+// 				// 			                        // update Map
+// 				// 			                        if (Map[genre[i].name] == undefined) {
+// 				// 			                            Map[genre[i].name] = 1;
+// 				// 			                            mapSize++;
+// 				// 			                        }
+// 				// 			                        else {
+// 				// 			                            Map[genre[i].name]++;
+// 				// 			                        }
+// 				// 				var radius = Map[genre[i].name];
+// 				// 
+// 				// 				// console.log(radius);
+// 				// 				// console.log(Map.length); 
+// 				// 				nodes.push( {name: genre[i].name, r: radius/10, x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: colors(1)});
+// 				// 				// d3_data.push();
+// 				// 			});
+// 				// 
+// 				// 			function offset() {
+// 				// 			        return Math.random() * 100;
+// 				// 			}
+// 				// 		});
+// 				// });
+// 				
+// 				
+// 			} else {
+// 		            		error("Trouble getting your tracks");
+// 		        	}	
+// 			
+// 			
+// 		});
+// 
+// 	});
+					
+	 // if (playlists.next) { // If there's more, repeat
+	 //        callSpotify(playlists.next, trackFields_2, function(playlists) {
+	 //            showPlaylistData(playlists);
+	 //        });
+	 // }
+	 // 							}
+
+// END ONCE FUNCTIONING CODE
+
+
 var genreList = [];
 var Map = {};
 var mapSize = 0;
 var d3_genre = [];
-
+var playlist_id;
+var genres = [];
+var d3Map = d3.map();
 
 function showTracks(tracks) {
-	
-	console.log(tracks);
+	                                       // console.log(tracks);
 	var genre;
     var list = $("#item-list");
-    var entries = d3.entries(tracks.items);
-	
-					
-	// console.log('d3 entries', entries);
-
-    // console.log('show tracks', tracks);
+    var entries = d3.entries(tracks.items); // console.log('d3 entries', entries);
+                                            // console.log('show tracks', tracks);
     if (tracks.offset == 0) {
         $("#main").show();
         $("#intro").hide();
@@ -245,223 +429,208 @@ function showTracks(tracks) {
         var artistName = item.track.artists[0].name;
 		var spotify_artist_id = item.track.artists[0].uri;
 		var track_id = item.track.id;
-
 		var artist;
 		var div;
 		var itemElement;
-
+		// var Map = {};
 		var echonest = "http://developer.echonest.com/api/v4/artist/profile?api_key=V67QTPVRZDSNCC4AW&id=spotify:artist:" + spotify_artist_id + "&bucket=genre";
-		  $.getJSON( echonest, {
+		$.getJSON( echonest, {
 		    format: "json"
-		  })
-		    .done(function(data) {
+		}).done(function(data) {
 			genre = data.response.artist.genres;
 			
-			
-			
-			
-			// for (var i = 0; i < genre.length; i++) {
-			//                                                
-			// 
-			// 
-			//                                             }
+			$(genre).each(function(i) {
 
-			
-			//var genre_count = ;
-			
-
-			
-			// console.log(genre);
-			
-			
-
+                var gen = genre[i].name;
+                var radius;
 				
-				$(genre).each(function(i){
-
-					 genreList.push(genre[i].name);
-
-    
-                        // update Map
-                        if (Map[genre[i].name] == undefined) {
-                            Map[genre[i].name] = 1;
-                            mapSize++;
-                        }
-                        else {
-                            Map[genre[i].name]++;
-                        }
-					var radius = Map[genre[i].name];
-
-					console.log(radius);
-					console.log(Map.length); 
-					nodes.push( {name: genre[i].name, r: radius, x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: colors(1)});
-					// d3_data.push();
-				});
-				
-				
-				
-				
-				
-
-				function offset() {
-				        return Math.random() * 100;
+				if ((d3Map.get(gen) == undefined) || (!d3Map.has(gen))) {
+					d3Map.set(gen, 1);
+				} else {
+					var mapVal = d3Map.get(gen);
+					mapVal++;
+					d3Map.remove(gen);
+					d3Map.set(gen, mapVal);
 				}
+
+                if (Map[gen] == undefined) {
+                    Map[gen] = 1;
+                    radius = Map[gen];
+                    genres[mapSize] = gen;
+                    mapSize++;
+
+					
+  
+                } else {
+                    Map[gen]++;
+                    radius = Map[gen];
+                    // console.log(Map[gen]);
+                    
+                    // var nodeArray = force.nodes();
+                    // for (var i = 0; i < nodes.length; i++) {
+                    //     if (nodes[i].genre == gen) {
+                    //         nodes[i].r = Map[gen];
+                } 
+                nodes.push( {
+                		genre: gen, r: Map[gen], x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: d3.rgb(245, 135, 54) 
+                	} );
+			});
+
+            function offset() {
+			     return Math.random() * 100;
+		    }
+
+		    // var d3Vals = d3Map.values();
+		    // console.log(d3Vals);
+		    // d3.sort(d3Vals);
+		    // console.log(d3Vals);
+
+
+
+			//APPEND GENRES OF EACH ARTIST OF EACH TRACK TO LIST
+
+			// itemElement = $("<div>").text(artistName).css("font-weight", "bold");
+			//     list.append(itemElement);   
+			//     $(genre).each(function(index) {
+			//          list.append('<div id="div'+ index +'" />' + 
+			//			genre[index].name); })
+			
+			// for (key in Map) {
+			// 	if (!d3Map.has(key)) {
+			// 		d3Map.set(key, Map[key]);
+			// 	}
+			// }
+			// console.log(d3Map);
+			// console.log(d3Map.keys());
+
+			// var mapKeys = d3Map.keys();
+			// console.log(d3Map.values());
+
+			// for (key in Map) {
+			// 	if (!d3Map.has(key)) {
+			// 		d3Map.set(key, Map[key]);
+			// 	}
+			// }
+
+
+			// console.log(d3Map.keys());
+			// console.log(d3Map.values());
+
+			var mapKeys = d3Map.keys();
+			// console.log(mapKeys);
+
+			// for (key in mapKeys) {
+			// 	console.log(mapKeys[key]);
+			// }
+
+			// for (key in mapKeys) {
+			// 	console.log(d3Map.get(key));
+			// }
+
+
+			// console.log(d3Map.values());
+			// console.log(d3Map.keys());
+
+			// for (key in d3Map) {
+			// 	console.log(d3Map.get(key));
+			// }
+			
+			
+			// for (key in mapKeys) {
+			// 	while (!d3Map.empty()) {
+			// 		var d3key = mapKeys[key];
+			// 		var keyVal = d3Map.get(d3key);
 				
+
+			// 		// console.log(keyVal);
+			// 		nodes.push( {
+			// 			genre: key, r: keyVal, x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: d3.rgb(245, 135, 54)
+			// 		});
+			// 		d3Map.remove(d3key);
+			// 		// console.log(d3Map.size());
+			// 	}
+			// 	// 	d3Map.remove(key);
+
+			// 	// }
+			// }
+
+
 			
 
-				//WORKS: USES MAP
+				// if (key != 0) {
+				// 	var value = Map[key];
+					
+    //             	key = 0;
+    //             	Map[key] = 0;
+				// }
+				// if (i == mapSize - 1) break;
+			//}
 
-                // for (var i = 0; i < genre.length; i++) {
-                //                                     genreList.push(genre[i].name);
-                //                 
-                //                                     // update Map
-                //                                     if (Map[genre[i].name] == undefined) {
-                //                                         Map[genre[i].name] = 1;
-                //                                         mapSize++;
-                //                                     }
-                //                                     else {
-                //                                         Map[genre[i].name]++;
-                //                                     }
-                //                                 }
-				
-
-
-
-
-
-
-				
-																//APPEND GENRES OF EACH ARTIST OF EACH TRACK TO LIST
-
-												                // itemElement = $("<div>").text(artistName).css("font-weight", "bold");
-												                //                 list.append(itemElement);   
-												                //                 $(genre).each(function(index){
-												                //                      list.append('<div id="div'+ index +'" />' + genre[index].name);
-												                //                 })
-				
-			// console.log(Map.values());
-			
-
-				svg.selectAll("circle")
-		                .data(nodes).enter()
-		            .append("circle")
-		            .attr("class", "node")
-		            .attr("cx", function(d) {return d.x;})
-		            .attr("cy", function(d) {return d.y;})
-		            .attr("fill", function(d){return d.color;})
-		            .attr("r", 1e-6)
-		                .transition()
-		            .attr("r", function(d) { return (d.r)})
-					.attr("x", function(d) { return d.cx; })
-				    .attr("y", function(d) { return d.cy; })
-				               
+		    svg.selectAll("circle")
+		        .data(nodes).enter()
+		        .append("circle")
+		        .attr("class", "node")
+		            // .attr("cx", function(d) {return d.x;})
+		            // .attr("cy", function(d) {return d.y;})
+		        .attr("fill", function(d){return d.color;})
+		        .attr("r", 1e-6).transition()
+		        .attr("r", function(d) { return d.r; })
 		
-		 force.on("tick", function(e) {
-
-					svg.selectAll("circle")
-		            .attr("cx", function(d) { return d.x; })
-		            .attr("cy", function(d) { return d.y; });
-
-
-		    });
-		
-		
-			    force.start();
-
-
-		    });
-			
-			
-    });
-
-	// console.log(Map);
-
-	// console.log(Map.values());
-	
+			svg.selectAll("circle")
+				.on('mouseover', function (d){
+					d3.select(this).style({opacity:'0.6'});
+					d3.select("#genre_title").text(d.genre);
+				})
+				.on('mouseout', function (d){
+					d3.select(this).style({opacity:'1'});
+					d3.select("#genre_title").text("");
+				})
+               
+		    force.on("tick", function(e) {
+			    svg.selectAll("circle")
+				    .attr("cx", function(d) { return d.x; })
+					.attr("cy", function(d) { return d.y; });
+			});	
+			force.start();
+		});	
+	});
 
 
-	
-		
-
-			// console.log(nodes);
-	
-
-	
-	
 	//WORKS EXCEPT FOR TEXT (USES MAP RATHER THAN DYNAMIC FUNCTION)
-	
-	// for (var key in Map) {
-	//          console.log(key);
-	//          console.log(Map[key]);
+
+	//   var circle = svgContainer
+	// 		.append("circle")
+	//      .attr("cx", Math.random() * (700 - 100) + 100)
+	//      .attr("cy", Math.random() * (700 - 100) + 100)
+	//      .attr("r", function(d) { return Map[key] * 3;})
+	//      .attr("opacity", 0.5)
+	//      .style("fill", "blue");	
 	// 
-	// 
-	//          var circle = svgContainer
-	// 					.append("circle")
-	//                      	.attr("cx", Math.random() * (700 - 100) + 100)
-	//                      	.attr("cy", Math.random() * (700 - 100) + 100)
-	//                      	.attr("r", function(d) { return Map[key] * 3;})
-	//                      	.attr("opacity", 0.5)
-	//                      	.style("fill", "blue");	
-	// 
-	// 	var textLabels = svgContainer
-	// 				.append("text")
-	// 				.attr("cx", Math.random() * (700 - 100) + 100)
-	//                  	.attr("cy", Math.random() * (700 - 100) + 100)
-	// 				.text(function(d) { return key; })
-	// 				.attr("font-family", "sans-serif")
-	// 				.attr("font-size", "20px")
-	// 				.attr("fill", "red")
-	// 
-	// 	}
+	// var textLabels = svgContainer
+	// 		.append("text")
+	// 		.attr("cx", Math.random() * (625 - 100) + 100)
+	//      .attr("cy", Math.random() * (625 - 100) + 100)
+	// 		.text(function(d) { return d.name; })
+	// 		.attr("font-family", "sans-serif")
+	// 		.attr("font-size", "20px")
+	// 		.attr("fill", "red")
 	
     if (tracks.next) {
         callSpotify(tracks.next, trackFields, function(tracks) {
             showTracks(tracks);
-        });
-
-
-		
+        });		
     }
 
-	// var svg = d3.select("body").append("svg:svg"),
-	//             colors = d3.scale.category20(),
-	//             w = 900,
-	//             h = 900;
-	// 
-	//     svg.attr("width", w).attr("height", h);
-	// 
-	// var force = d3.layout.force()
-	//             .gravity(0.1)
-	//             .charge(-30)
-	//             .size([w, h]);
-	// 
-	// nodes = force.nodes(), centers = [];
-	
-	
- // for (var i = 0; i < genre.length; i++) {
- //                    genreList.push(genre[i].name);
- // 
- //                    // update Map
- //                    if (Map[genre[i].name] == undefined) {
- //                        Map[genre[i].name] = 1;
- //                        mapSize++;
- //                    }
- //                    else {
- //                        Map[genre[i].name]++;
- //                    }
- //                }
+	// GET TOTAL GENRES IN PLAYLIST
+	var genre_menu = d3.map(Map);
+	var genre_values = genre_menu.values();
+	var count = 0;
 
-                // console.log(Map);
-                // console.log(mapSize);
-                // console.log("perfect");
-
-
+	for (var m = 0; m < genre_menu.size(); m++) {
+		var new_data = genre_values[m];
+		count += new_data;
+	}
 }
-
-
-
-
-
-
 
 // $.ajax({
 // 
@@ -508,6 +677,20 @@ function showTracks(tracks) {
 // 		console.log("Something went wrong...")
 //   }
 // });
+
+// var test_data = Parse.Object.extend("parsePlaylistData");
+// var query = new Parse.Query(ParsePlaylistData);
+// query.get({
+//   success: function(parsePlaylistData) {
+// 	console.log(parsePlaylistData);
+//     // The object was retrieved successfully.
+//   },
+//   error: function(object, error) {
+//     // The object was not retrieved successfully.
+//     // error is a Parse.Error with an error code and message.
+//   }
+// });
+
 </script>
 </body>
 </html>
