@@ -12,28 +12,28 @@
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
 	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+	<!-- <script src="assets/js/jquery.echnoest.js"></script> -->
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400|Raleway:400,500,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <link href="dist/sp-bootstrap.min.css" rel="stylesheet" media="screen">
-    <link type="text/css" href="styles.css" rel="stylesheet" />
+    <link type="text/css" href="assets/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="Proxima_Nova/stylesheet.css" rel="stylesheet"/>
     <link type="text/css" href="Gotham/stylesheet.css" rel="stylesheet"/>
 </head>
 <body>
 
 <div id="harm-body">
-	
-<!-- 	<div class="welcome" id="login">
+	<!-- <div class="welcome" id="login">
 		<input type="text" class="harm-search" id="search" autocomplete="off">
 	    <label for="username">username</label>
 	</div> -->
 	
     <div class="welcome clearfix" id="go">
     	<div class="login-box">
-    		<img class="logo" src="harmonize_logo.png"></img>
-    		<img class="logo-text" src="harmonize_text.png"></img>
+    		<img class="logo" src="assets/images/harmonize_logo.png"></img>
+    		<img class="logo-text" src="assets/images/harmonize_text.png"></img>
         	<!-- <h1 class="harm-h1">harmonize</h1> -->
         	<!-- <div class="login-subtext">your musical fingerprint</div> -->
         	<button class="btn btn-info btn-large harm-center" type="button"> enter </button>
@@ -56,52 +56,34 @@
     		<img class="logo" src="harmonize_logo.png"></img><br>
     		<img class="logo-text" src="harmonize_text.png"></img>
     	</div>
-	
 		<ul>
 	        <li class="stats-top">Your Stats</li>
 	        <li class="stats">rhythm & blues: <span class="bold">23%</span></li>
 	        <li class="stats">alternative: <span class="bold">18%</span></li>
 	        <li class="stats">classic rock: <span class="bold">16%</span></li>
     	</ul>
-		
 	</nav>
 	
-<div id="genre_title"></div> 
-
-
+	<div id="genre_title"></div> 
    <!--  <nav class="harm-right">
        <li><!-- <span class="harm-circle"></span> <span class="circle-text">clear</span></li>
        <li><span class="harm-circle"></span><span class="circle-text">refresh</span></li>
        <li><span class="harm-circle"></span><span class="circle-text">logout</span></li>
     </nav> -->
 
-<form>        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
 		<input style="display:none" type="text" name="fakeusernameremembered"/>
 		<input style="display:none" type="password" name="fakepasswordremembered"/>
 		<input style="display:none" type="text" class="harm-search">
 		<!-- Real Fields -->
 		<input type="text" class="harm-search" id="search" autocomplete="off">
-        <label for="search">Search</label>
-</form>
-
-<!--     <div class="harm-stats">
-        <ul class="harm-left">
-            <li>Genre 1</li>
-            <li>Genre 2</li>
-        </ul>
-    </div> -->
-
+	    <label for="search">Search</label>
+	</form>
     
-    <div id="item-list"> 
-    </div>
+    <div id="item-list"> </div>
+<!-- </div> -->
 
-
-<script src="main.js"></script>
-<script src="Parse_init.js"></script>
-<script>
-
-
-
-</script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/Parse_init.js"></script>
 </body>
 </html>
