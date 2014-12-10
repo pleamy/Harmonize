@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <html lang="en">
@@ -12,7 +10,6 @@
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://d3js.org/queue.v1.min.js"></script>
 	<script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
-	<!-- <script src="assets/js/jquery.echnoest.js"></script> -->
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400|Raleway:400,500,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -51,7 +48,7 @@
 </div>
 
 <div id="main" class="container clearfix">
-    <nav class="harm-left">
+    <!-- <nav class="harm-left">
     	<div class="harm-logo">
     		<img class="logo" src="harmonize_logo.png"></img><br>
     		<img class="logo-text" src="harmonize_text.png"></img>
@@ -62,7 +59,7 @@
 	        <li class="stats">alternative: <span class="bold">18%</span></li>
 	        <li class="stats">classic rock: <span class="bold">16%</span></li>
     	</ul>
-	</nav>
+	</nav> -->
 	
 	<div id="genre_title"></div> 
    <!--  <nav class="harm-right">
@@ -71,19 +68,21 @@
        <li><span class="harm-circle"></span><span class="circle-text">logout</span></li>
     </nav> -->
 
-	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+<!-- 	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields 
 		<input style="display:none" type="text" name="fakeusernameremembered"/>
 		<input style="display:none" type="password" name="fakepasswordremembered"/>
 		<input style="display:none" type="text" class="harm-search">
-		<!-- Real Fields -->
+		<!-- Real Fields 
 		<input type="text" class="harm-search" id="search" autocomplete="off">
 	    <label for="search">Search</label>
-	</form>
+	</form> -->
     
     <div id="item-list"> </div>
 <!-- </div> -->
 
-<script src="assets/js/main.js"></script>
 <script src="assets/js/Parse_init.js"></script>
+<script src="assets/js/Spotify_init.js"></script>
+<script src="assets/js/visualization.js"></script>
+
 </body>
 </html>
