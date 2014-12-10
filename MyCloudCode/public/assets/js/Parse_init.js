@@ -5,9 +5,9 @@ var parsePlaylistData = new ParsePlaylistData();
 var svgContainer;
 var svg;
 var colors;
-var nodes;
+// var nodes;
 var d3_data;
-var force;
+// var force;
 var global_user_id;
 
 $(document).ready(
@@ -74,10 +74,7 @@ $(document).ready(
   							// console.log(data);	
   							svg = d3.select("#main").append("svg:svg").attr("width",600).attr("height", 600);
   							colors = d3.scale.category20();
-  							force = d3.layout.force().gravity(0.13)
-  													 .charge(-30)
-  													 .size([600, 600]);
-  							nodes = force.nodes(), centers = [];
+  							
   							// WORKS: USES MAP
   							// svgContainer = d3.select("#main").append("svg").attr("width",800).attr("height",800)
   							showTracks(data.tracks);

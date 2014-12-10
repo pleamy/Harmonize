@@ -3,17 +3,26 @@ var Map = {};
 var mapSize = 0;
 var d3_genre = [];
 var playlist_id;
-var genres = [];
+
 var d3Map = d3.map();
 var trackFields = { fields:'offset,next,items(track(name,artists))' };
 var trackFields_2 = {};
 
-function showTracks(tracks) {
-	                                       // console.log(tracks);
+
+function showTracks(tracks) {  
+	// console.log(tracks);                              
 	var genre;
     var list = $("#item-list");
-    var entries = d3.entries(tracks.items); // console.log('d3 entries', entries);
-                                            // console.log('show tracks', tracks);
+    var entries = d3.entries(tracks.items); 
+    var d3Map = d3.map();
+    var genres = [];
+    var force = d3.layout.force().gravity(0.13)
+  								.charge(-30)
+  								.size([600, 600]);
+	var	nodes = force.nodes(), centers = [];
+    // console.log('d3 entries', entries);
+    // console.log('show tracks', tracks);
+    
     if (tracks.offset == 0) {
         $("#main").show();
         $("#intro").hide();
@@ -27,25 +36,39 @@ function showTracks(tracks) {
 		var artist;
 		var div;
 		var itemElement;
-		// var Map = {};
 		var echonest = "http://developer.echonest.com/api/v4/artist/profile?api_key=V67QTPVRZDSNCC4AW&id=spotify:artist:" + spotify_artist_id + "&bucket=genre";
+		
+
 		$.getJSON( echonest, {
 		    format: "json"
 		}).done(function(data) {
 			genre = data.response.artist.genres;
-			
-			$(genre).each(function(i) {
+			// console.log(genre.name);
 
+			$(genre).each(function(i) {
                 var gen = genre[i].name;
                 var radius;
 				
 				if ((d3Map.get(gen) == undefined) || (!d3Map.has(gen))) {
 					d3Map.set(gen, 1);
+					nodes.push({
+		            	genre: gen, r: d3Map.get(gen), 
+		            	x: 800 / 2 + offset(), 
+		            	y: 800 / 2 + offset(), 
+		            	color: d3.rgb(245, 135, 54) 
+	           		});
 				} else {
 					var mapVal = d3Map.get(gen);
 					mapVal++;
 					d3Map.remove(gen);
 					d3Map.set(gen, mapVal);
+					for (n in nodes) {
+						if(nodes[n].genre == gen) {
+							nodes[n].r = mapVal;
+							console.log("hey");
+							// nodes.push(nodes[n]);
+						}
+					}
 				}
 
                 if (Map[gen] == undefined) {
@@ -53,113 +76,35 @@ function showTracks(tracks) {
                     radius = Map[gen];
                     genres[mapSize] = gen;
                     mapSize++;
-
-					
-  
                 } else {
                     Map[gen]++;
                     radius = Map[gen];
-                    // console.log(Map[gen]);
-                    
-                    // var nodeArray = force.nodes();
-                    // for (var i = 0; i < nodes.length; i++) {
-                    //     if (nodes[i].genre == gen) {
-                    //         nodes[i].r = Map[gen];
                 } 
-                nodes.push( {
-                		genre: gen, r: Map[gen], x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: d3.rgb(245, 135, 54) 
-                	} );
 			});
 
-            function offset() {
+			
+
+			// console.log(d3Map.keys());
+			var keys = d3Map.keys();
+			function offset() {
 			     return Math.random() * 100;
 		    }
 
-		    // var d3Vals = d3Map.values();
-		    // console.log(d3Vals);
-		    // d3.sort(d3Vals);
-		    // console.log(d3Vals);
 
 
-
-			//APPEND GENRES OF EACH ARTIST OF EACH TRACK TO LIST
-
-			// itemElement = $("<div>").text(artistName).css("font-weight", "bold");
-			//     list.append(itemElement);   
-			//     $(genre).each(function(index) {
-			//          list.append('<div id="div'+ index +'" />' + 
-			//			genre[index].name); })
-			
-			// for (key in Map) {
-			// 	if (!d3Map.has(key)) {
-			// 		d3Map.set(key, Map[key]);
-			// 	}
-			// }
-			// console.log(d3Map);
-			// console.log(d3Map.keys());
-
-			// var mapKeys = d3Map.keys();
-			// console.log(d3Map.values());
-
-			// for (key in Map) {
-			// 	if (!d3Map.has(key)) {
-			// 		d3Map.set(key, Map[key]);
-			// 	}
-			// }
-
-
-			// console.log(d3Map.keys());
-			// console.log(d3Map.values());
-
-			var mapKeys = d3Map.keys();
-			// console.log(mapKeys);
-
-			// for (key in mapKeys) {
-			// 	console.log(mapKeys[key]);
-			// }
-
-			// for (key in mapKeys) {
-			// 	console.log(d3Map.get(key));
-			// }
-
-
-			// console.log(d3Map.values());
-			// console.log(d3Map.keys());
-
-			// for (key in d3Map) {
-			// 	console.log(d3Map.get(key));
-			// }
-			
-			
-			// for (key in mapKeys) {
-			// 	while (!d3Map.empty()) {
-			// 		var d3key = mapKeys[key];
-			// 		var keyVal = d3Map.get(d3key);
+			svg.selectAll("circle")
+				.data(nodes).enter()
+				.append("circle")
+				.attr("class", "node")
+				// .attr("cx", function(d) {return d.x;})
+				// .attr("cy", function(d) {return d.y;})
+				.attr("fill", function(d){ return d.color; })
+				.attr("r", 1e-6).transition()
+				.attr("r", function(d) { 
+					console.log(d3Map.get(d.genre));
+					return d3Map.get(d.genre); 
+				})
 				
-
-			// 		// console.log(keyVal);
-			// 		nodes.push( {
-			// 			genre: key, r: keyVal, x: 800 / 2 + offset(), y: 800 / 2 + offset(), color: d3.rgb(245, 135, 54)
-			// 		});
-			// 		d3Map.remove(d3key);
-			// 		// console.log(d3Map.size());
-			// 	}
-			// 	// 	d3Map.remove(key);
-
-			// 	// }
-			// }
-
-
-		    svg.selectAll("circle")
-		        .data(nodes).enter()
-		        .append("circle")
-		        .attr("class", "node")
-		            // .attr("cx", function(d) {return d.x;})
-		            // .attr("cy", function(d) {return d.y;})
-		        .attr("fill", function(d){return d.color;})
-		        .attr("r", 1e-6).transition()
-		        .attr("r", function(d) { return d.r; })
-		
 			svg.selectAll("circle")
 				.on('mouseover', function (d){
 					d3.select(this).style({opacity:'0.6'});
@@ -169,10 +114,10 @@ function showTracks(tracks) {
 					d3.select(this).style({opacity:'1'});
 					d3.select("#genre_title").text("");
 				})
-               
-		    force.on("tick", function(e) {
-			    svg.selectAll("circle")
-				    .attr("cx", function(d) { return d.x; })
+			               
+			force.on("tick", function(e) {
+				svg.selectAll("circle")
+					.attr("cx", function(d) { return d.x; })
 					.attr("cy", function(d) { return d.y; });
 			});	
 			force.start();
@@ -180,37 +125,18 @@ function showTracks(tracks) {
 	});
 
 
-	//WORKS EXCEPT FOR TEXT (USES MAP RATHER THAN DYNAMIC FUNCTION)
-
-	//   var circle = svgContainer
-	// 		.append("circle")
-	//      .attr("cx", Math.random() * (700 - 100) + 100)
-	//      .attr("cy", Math.random() * (700 - 100) + 100)
-	//      .attr("r", function(d) { return Map[key] * 3;})
-	//      .attr("opacity", 0.5)
-	//      .style("fill", "blue");	
-	// 
-	// var textLabels = svgContainer
-	// 		.append("text")
-	// 		.attr("cx", Math.random() * (625 - 100) + 100)
-	//      .attr("cy", Math.random() * (625 - 100) + 100)
-	// 		.text(function(d) { return d.name; })
-	// 		.attr("font-family", "sans-serif")
-	// 		.attr("font-size", "20px")
-	// 		.attr("fill", "red")
-	
-    if (tracks.next) {
-        callSpotify(tracks.next, trackFields, function(tracks) {
-            showTracks(tracks);
-        });		
-    }
+    // if (tracks.next) {
+    //     callSpotify(tracks.next, trackFields, function(tracks) {
+    //         showTracks(tracks);
+    //     });		
+    // }
 
 	// GET TOTAL GENRES IN PLAYLIST
-	var genre_menu = d3.map(Map);
-	var genre_values = genre_menu.values();
-	var count = 0;
-	for (var m = 0; m < genre_menu.size(); m++) {
-		var new_data = genre_values[m];
-		count += new_data;
-	}
+	// var genre_menu = d3.map(Map);
+	// var genre_values = genre_menu.values();
+	// var count = 0;
+	// for (var m = 0; m < genre_menu.size(); m++) {
+	// 	var new_data = genre_values[m];
+	// 	count += new_data;
+	// }
 }
