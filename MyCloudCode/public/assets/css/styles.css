@@ -13,17 +13,63 @@ body {
 /*  padding-top: 10%;*/
 }
 .welcome {
-  font-family: 'proxima_nova_scosf_rgregular';
+  /*font-family: 'proxima_nova_scosf_rgregular';
   text-align: center;
   height: 100vh;
   display: inline-block;
-  /*background-color: #e5e5e5;*/
+  background-color: #e5e5e5;*/
+  font-family: 'Montserrat';
+
+}
+.welcome:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background-image: url('harm_back.jpg');
+    width: 100vw;
+    height: 100vh;
+
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+#login-wrap {
+  width: 65vw;
+  height: 100vh;
+/*  outline: 2px black solid;*/
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  min-width: 175px;
+  margin-bottom: -5vw;
+  width: 14vw;
 }
 .logo-text {
-  margin-top: -60px;
+ /* margin-top: -60px;*/
 }
 .login-box {
-  position: absolute;
+  min-width: 300px;
+  min-height: 248px;
+  width: 29vw;
+  height: 24vw;
+  background-color: #f37b29;
+  box-shadow: 0px 0px 30px #333333;
+  border-radius: 2.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  /*position: absolute;
   height: 360px;
   width: 400px;
   background-color: #ff8000; /*#f89a1c;*/
@@ -35,17 +81,54 @@ body {
   padding: 40px 0px 0px 0px;
   margin-top: 15%;
   border-radius: 20px;
-  left: 15%;
+  left: 15%;*/
 }
 .login-banner {
-  position: absolute;
+  font-family: 'Montserrat';
+  height: 100vh;
+  width: 24vw;
+  background-color: #f37b29;
+  box-shadow: 0px 0px 30px #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*position: absolute;
   background-color: #f89a1c;
   height: 100%;
   width: 280px;
   top: 0px;
-  right: 10%;
+  right: 10%;*/
   /*margin-right: 30%;*/
 }
+.login-banner-wrap {
+  width: 18vw;
+  height: 100vh;
+  text-align: left;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.login-banner-wrap h2 {
+  font-family: Lato;
+  font-size: 3vw;
+  margin-bottom: 25px;
+}
+.login-banner-wrap p {
+  font-family: Lato;
+  font-weight: 200;
+  text-transform: uppercase;
+  line-height: 2;
+  font-size: .8vw;
+  letter-spacing: .1em;
+}
+.login-banner-wrap span {
+  font-weight: bold;
+}
+
+
 h1.harm-h1 {
   /*font-family: 'Montserrat';*/
   /*color: #0097BD;*/
@@ -67,9 +150,22 @@ h1.harm-h1 {
   margin-left: 40px;*/
 }
 button.harm-center {
-  height: 50px;
+  border-radius: 1.7vw !important;
+  padding: 1vw 5vw;
+  /* color: #0097BD; */
+  color: #f37b29;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  letter-spacing: .2vw;
+  font-weight: 600;
+
+  /*height: 50px;
   width: 200px;
-  /*color: #0097BD;*/
+  /*color: #0097BD;
   color: #f89a1c;
   font-size: 16px;
   font-weight: 300;
@@ -79,7 +175,7 @@ button.harm-center {
   margin-bottom: 10px;
   border: none;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1px;*/
 }
 button.harm-center:hover {
   color: #fff;
@@ -97,24 +193,41 @@ ul {
 }
 li {
   text-align: center;
+  /*color: #282828;*/
   color: #fff;
   padding-bottom: 15px;
 }
 li.created-by {
   margin-bottom: 15%;
 }
+img.logo {
+  width: 80%;
+  height: auto;
+}
 
-
+@media only screen and (max-width: 840px)  {
+  .login-banner {
+    display: none;
+  }
+  
+  .button.harm-center {
+    font-size: 2vh;
+  }
+  
+  #login-wrap {
+    justify-content: space-around;
+  }
+}
 
 
 
 .clearfix:after {
 	visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 .clearfix {
 	display: inline-block;
@@ -132,16 +245,17 @@ html .clearfix {
 nav {
 	position: absolute;
 	top: 0px;
-	-webkit-box-shadow: 	4px 0px 8px #a5a5a5;  
-  	-moz-box-shadow: 		4px 0px 8px #a5a5a5;  
-  	box-shadow: 			4px 0px 8px #a5a5a5;
-  	background-color: #ff8000;
+	-webkit-box-shadow: 	 4px 0px 8px #a5a5a5;  
+  -moz-box-shadow: 		   4px 0px 8px #a5a5a5;  
+  box-shadow: 			     4px 0px 8px #a5a5a5;
+  background-color: #fff;
+  /*background-color: #ff8000;*/
 }
 nav ul {
   list-style: none;
 }
 nav.harm-left {
-  left: 0px;
+  left: 0;
   /*background-color: #999;*/
   width: 25%;
   bottom: 0px;
@@ -149,63 +263,41 @@ nav.harm-left {
 nav.harm-left .stats-top {
   font-family: 'Raleway';
   font-weight: 400;
-  margin: 8vh 0 2vh 0;
-  font-size: 20px;
+  margin: 5% 0% 2% 0%;
+  /*margin: 8vh 0 2vh 0;*/
+  font-size: .7em;
+  /*font-size: 20px;*/
   /*font-weight: 500;*/
-  text-align: left;
+  text-align: center;
+  /*text-align: left;*/
   letter-spacing: 2px;
-  
+  color: #bababa;
+  text-transform: uppercase;
+}
+ul.statistics {
+  margin-left: -20%;
 }
 nav.harm-left li.stats {
   font-family: 'Raleway';
   font-weight: 300;
-  font-size: 18px;
+  font-size: .9em;
   text-align: left;
  /* margin-left: 1vh;*/
   letter-spacing: 0.5px;
   padding-bottom: 3px;
 }
+/*span.stat-gen {
+  display: inline-block;
+  width: 76%;
+}*/
 span.bold {
   font-weight: 500;
   /*text-align: right;*/
 }
-/*nav.harm-right {
-  right: 0px;
-  background-color: #282828;
-  color: #fff;
-  width: 20%;
-  height: 8vh;
-}*/
-/*nav.harm-right li {
-  list-style: none;
-  /*padding: 15px;*/
-/*  display: inline;*/
-/*}
-nav.harm-right {
-  /*left: 85%;*/
-  /*margin-top: 5vh;
-  color: #282828;
-  font-size: 16px;
 
-}*/
-/*span.harm-circle {
-  right: 10%;
-  margin-top: 1vh;
-  background-color: #282828;
-  height: 30px;
-  width: 30px;
-  border-radius: 30px;
-  color: #282828;
-  display: inline-block;
-  margin-right: 2vh;
- /* font-size: 16px;*/
-/*}
-span.circle-text {
-  display: inline;
-  margin-right: 80%;
+.orange {
+  color: #f58735;
 }
-*/
-
 #main {
     margin-top:0px;
     margin-left:auto;
@@ -252,6 +344,13 @@ button.harm-search:focus {
 	height: 50px;
 	top: 50%;
 	margin-top: -50px;
+}
+.nav-button {
+  position: absolute;
+  right: -10%;
+  bottom: 10%;
+  width: 1%;
+  height: auto;
 }
 
 

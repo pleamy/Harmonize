@@ -28,61 +28,98 @@
 	</div> -->
 	
     <div class="welcome clearfix" id="go">
-    	<div class="login-box">
-    		<img class="logo" src="assets/images/harmonize_logo.png"></img>
-    		<img class="logo-text" src="assets/images/harmonize_text.png"></img>
-        	<!-- <h1 class="harm-h1">harmonize</h1> -->
-        	<!-- <div class="login-subtext">your musical fingerprint</div> -->
-        	<button class="btn btn-info btn-large harm-center" type="button"> enter </button>
-        </div>
-        <div class="login-banner">
-        	<!-- <h2 class="banner">Welcome to Harmonize</h2> -->
-        	<!-- <ul>
-        		<li>View your musical fingerprint.</li>
-        		<li>View your musical fingerprint.</li>
-        		<li>View your musical fingerprint.</li>
-        		<li class="created-by">Created by Amy Le and Vincent Snagg.</li>
-        	</ul> -->
-       	</div>
+		<section id="login-wrap">
+	    	<div class="login-box">
+	    		<img class="logo" src="harmonize_logo.svg"></img>
+	        	<!-- <h1 class="harm-h1">harmonize</h1> -->
+	        	<!-- <div class="login-subtext">your musical fingerprint</div> -->
+	        	<button class="btn btn-info btn-large harm-center" type="button"> login to spotify </button>
+        	</div>
+        	<div class="login-banner">
+				<div class="login-banner-wrap">
+					<h2>Perfect <br /> harmony.</h2>
+					<p><span>visualize</span> your music: see your musical fingerprint</p>
+					<p><span>galvanize</span> your friends to hear your music</p>
+					<p><span>harmonize</span> with others to see your similarities</p>
+				</div>
+       		</div>
+		</section>
     </div>
 </div>
 
 <div id="main" class="container clearfix">
-    <!-- <nav class="harm-left">
+	<!-- <nav class="harm-left">
     	<div class="harm-logo">
     		<img class="logo" src="harmonize_logo.png"></img><br>
     		<img class="logo-text" src="harmonize_text.png"></img>
     	</div>
+	
 		<ul>
 	        <li class="stats-top">Your Stats</li>
-	        <li class="stats">rhythm & blues: <span class="bold">23%</span></li>
+	        <li class="stats">rhythm and blues: <span class="bold">23%</span></li>
 	        <li class="stats">alternative: <span class="bold">18%</span></li>
 	        <li class="stats">classic rock: <span class="bold">16%</span></li>
     	</ul>
+		
 	</nav> -->
+
+    <nav class="harm-left">
+    	<div class="harm-logo">
+    		<img class="logo" src="assets/images/harmonize_logo_orange.png"></img><br>
+    		<!-- <img class="logo-text" src="harmonize_text.png"></img> -->
+    	</div>
+		<ul class="statistics">
+	        <li class="stats-top">Your Stats</li>
+	        <li class="stats">
+                <span class="stat-gen">rhythm & blues:</span> 
+                <span class="bold orange">23%</span>
+            </li>
+	        <li class="stats">
+                <span class="stat-gen">alternative: </span>
+                <span class="bold orange">18%</span>
+            </li>
+	        <li class="stats">
+                <span class="stat-gen">classic rock: </span>
+                <span class="bold orange">16%</span>
+            </li>
+    	</ul>
+	</nav>
 	
 	<div id="genre_title"></div> 
+
+    
+
    <!--  <nav class="harm-right">
        <li><!-- <span class="harm-circle"></span> <span class="circle-text">clear</span></li>
        <li><span class="harm-circle"></span><span class="circle-text">refresh</span></li>
        <li><span class="harm-circle"></span><span class="circle-text">logout</span></li>
     </nav> -->
 
-<!-- 	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields 
-		<input style="display:none" type="text" name="fakeusernameremembered"/>
-		<input style="display:none" type="password" name="fakepasswordremembered"/>
-		<input style="display:none" type="text" class="harm-search">
-		<!-- Real Fields 
-		<input type="text" class="harm-search" id="search" autocomplete="off">
-	    <label for="search">Search</label>
-	</form> -->
-    <br><br>
+	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+			<input style="display:none" type="text" name="fakeusernameremembered"/>
+			<input style="display:none" type="password" name="fakepasswordremembered"/>
+			<input style="display:none" type="text" class="harm-search">
+			<!-- Real Fields -->
+			<input type="text" class="harm-search" id="search" autocomplete="off">
+	        <label for="search">Search</label>
+	</form>
+
+	<!--     <div class="harm-stats">
+        <ul class="harm-left">
+            <li>Genre 1</li>
+            <li>Genre 2</li>
+        </ul>
+    </div> -->
+
+
+    
     <div id="item-list"> </div>
+   <!--  <div class="nav-button"><img src="assets/images/refresh.png"></div>
+    <div class="nav-button"><img src="assets/images/info.png"></div> -->
 <!-- </div> -->
 
-<script src="assets/js/Parse_init.js"></script>
-<script src="assets/js/Spotify_init.js"></script>
-<script src="assets/js/visualization.js"></script>
-
+    <script src="assets/js/Parse_init.js"></script>
+    <script src="assets/js/Spotify_init.js"></script>
+    <script src="assets/js/visualization.js"></script>
 </body>
 </html>

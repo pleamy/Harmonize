@@ -17,6 +17,7 @@ function showTracks(tracks) {
     var force = d3.layout.force().gravity(0.13)
   								.charge(-30)
   								.size([600, 600]);
+  	var	nodes = force.nodes(), centers = [];
 	
     // console.log('d3 entries', entries);
     // console.log('show tracks', tracks);
@@ -49,16 +50,27 @@ function showTracks(tracks) {
 				
 				if ((d3Map.get(gen) == undefined) || (!d3Map.has(gen))) {
 					d3Map.set(gen, 1);
+					radius = 1;
+					// nodes.push({
+		   //          	genre: g, r: gName, 
+		   //          	x: 800 / 2 + offset(), 
+		   //          	y: 800 / 2 + offset(), 
+		   //          	color: d3.rgb(245, 135, 54) 
+	    //        		});
 					
 				} else {
 					var mapVal = d3Map.get(gen);
 					mapVal++;
 					d3Map.remove(gen);
 					d3Map.set(gen, mapVal);
-					
-						
-					
+					radius = mapVal;
 				}
+				
+				nodes.push ({	genre: gen, r: radius, 
+				            	x: 800 / 2 + offset(), 
+				            	y: 800 / 2 + offset(), 
+				            	color: d3.rgb(245, 135, 54) 
+							});
 
 				// for (n in nodes) {
 				// 	if(nodes[n].genre == gen) {
@@ -81,24 +93,20 @@ function showTracks(tracks) {
 			
 
 			// console.log(d3Map.keys());
-			var keys = d3Map.keys();
-			function offset() {
-			     return Math.random() * 100;
-		    }
-		    var nodes = null;
-		    var	nodes = force.nodes(), centers = [];
-		    for (k in keys) {
-		    	var g = keys[k];
-		    	var gName = d3Map.get(g);
-		    	nodes.push({
-		            	genre: g, r: gName, 
-		            	x: 800 / 2 + offset(), 
-		            	y: 800 / 2 + offset(), 
-		            	color: d3.rgb(245, 135, 54) 
-	           		});
-		    }
+			// var keys = d3Map.keys();
+			// 
+		 //    var nodes = null;
+		 //    
+		 //    for (k in keys) {
+		 //    	var g = keys[k];
+		 //    	var gName = d3Map.get(g);
+		    	
+		 //    }
 		    
-
+		 function offset() {
+			     	return Math.random() * 100;
+		    	}
+		    	
 			svg.selectAll("circle")
 				.data(nodes).enter()
 				.append("circle")
