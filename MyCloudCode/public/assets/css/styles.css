@@ -364,7 +364,10 @@ button.harm-search:focus {
   height: 40px;
   border-radius: 40px;
   display: inline-block;
-  background-color: #a5a5a5;
+  /*background-color: #a5a5a5;*/
+  -webkit-box-shadow:    0px 4px 4px -2px #a1a1a1;  
+  -moz-box-shadow:       0px 4px 4px -2px #a1a1a1;   
+  box-shadow:            0px 4px 4px -2px #a1a1a1; 
 }
 /*.icons {
   width: 40px;
@@ -375,16 +378,16 @@ button.harm-search:focus {
   background-color: #282828;
 }
 #icon-refresh {
-  background-image: url('../assets/images/refresh.png');
+  background-image: url("../assets/images/refresh.png");
   background-repeat: no-repeat;
   margin-right: 100px;
 }
 #icon-refresh:hover {
-  background-image: url('../assets/images/refresh_hover.png');
+  background-image: url("../assets/images/refresh_hover.png");
   background-repeat: no-repeat;
 }
 #icon-info {
-  background-image: url('../assets/images/info.png');
+  background-image: url("../assets/images/info.png");
   background-repeat: no-repeat;
   margin-right: 50px;
 }
@@ -432,7 +435,7 @@ button.dismiss {
 }
 
 
-span.tour {
+.tour {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -442,9 +445,13 @@ span.tour {
   padding: 0;
   margin: 0;
 }
-span.tour:hover {
+.tour:hover {
   cursor: pointer;
   background-color: #a5a5a5;
+}
+#modal-form {
+  display: inline-block;
+  top: 20px;
 }
 .pulse {
   -webkit-animation:  pulse 1s linear infinite;
@@ -522,38 +529,6 @@ span.tour:hover {
 }
 
 
-/*.hero-unit {
-  margin-top:66px;
-  padding-bottom:30px;
-  color: #fff;
-  background-color: #84BD00;
-  text-align:center;
-}
-.hero-unit h1 {
-    font-size:64px;
-}
-.navbar-nav li a {
-    cursor:pointer;
-}
-#footer {
-    margin-top:10px;
-    margin-left:auto;
-    margin-right:auto;
-    text-align:center;
-}
-#main h2 {
-    font-size:32px;
-}
-#info {
-    margin-top:20px;
-    margin-left:10px;
-    width:100%;
-    text-align:center;
-    margin-bottom:10px;
-    height:32px;
-    font-size:24px;
-}*/
-
 
 
 
@@ -575,7 +550,7 @@ form {
     -webkit-box-shadow: 0 1px 5px #000;*/
     
     height: 32px;
-    margin: 50px auto 0px auto;
+    margin: 20px auto -20px auto;
     padding: 0;
     width: 500px;
 }
