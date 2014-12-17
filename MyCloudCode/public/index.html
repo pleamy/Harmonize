@@ -70,6 +70,7 @@
     	</div>
 		<ul class="statistics">
 	        <li class="stats-top">Your Stats</li>
+            <span class="tour pulse"></span>
 	        <li class="stats">
                 <span class="stat-gen">r&b:</span> 
                 <span class="bold orange">23%</span>
@@ -87,18 +88,9 @@
     <nav class="harm-right">
     </nav>
 
-    <div class="heart pulse2"></div>
-	
 	<div id="genre_title"></div> 
 
-    
-
-   <!--  <nav class="harm-right">
-       <li><!-- <span class="harm-circle"></span> <span class="circle-text">clear</span></li>
-       <li><span class="harm-circle"></span><span class="circle-text">refresh</span></li>
-       <li><span class="harm-circle"></span><span class="circle-text">logout</span></li>
-    </nav> -->
-
+    <span class="tour pulse"></span>
 	<form><!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
 			<input style="display:none" type="text" name="fakeusernameremembered"/>
 			<input style="display:none" type="password" name="fakepasswordremembered"/>
@@ -108,8 +100,10 @@
 	        <label for="search">Search</label>
 	</form>
 
+    <span class="tour pulse"></span>
     <div id="item-list"> </div>
 
+    <span class="tour pulse"></span>
     <div class="nav-button icons" id="icon-refresh"></div>
     <div class="nav-button icons" id="icon-info"></div>
     <div class="nav-button icons" ><div id="icon-email"</div>
@@ -120,5 +114,56 @@
     <script src="assets/js/Parse_init.js"></script>
     <script src="assets/js/Spotify_init.js"></script>
     <script src="assets/js/visualization.js"></script>
+
+
+    <div id="tour-search" class="tour-modal">
+        <p class="tour-desc">Search for and harmonize with your friends. See the overlap and differences between genres, then recommend that they listen to certain songs!</p>
+        <ul class="tour-buttons">
+            <li class="tour-done"><button class="done">Done</button></li>
+            <li class="tour-dismiss"><button class="dismiss">Dismiss all tips</button></li>
+        </ul>
+    </div>
+
+    <div id="tour-stats" class="tour-modal">
+        <p class="tour-desc">The top five genres of your Starred playlist are shown here. Click on one to see their position in your musical fingerprint and discover more music within this genre.</p>
+        <ul class="tour-buttons">
+            <li class="tour-done"><button class="done">Done</button></li>
+            <li class="tour-dismiss"><button class="dismiss">Dismiss all tips</button></li>
+        </ul>
+    </div>
+
+    <div id="tour-vis" class="tour-modal">
+        <p class="tour-desc">All of the genres in your Starred Playlist are shown here. Hover over a bubble to see which genres you listen to!</p>
+        <ul class="tour-buttons">
+            <li class="tour-done"><button class="done">Done</button></li>
+            <li class="tour-dismiss"><button class="dismiss">Dismiss all tips</button></li>
+        </ul>
+    </div>
+
+    <div id="tour-menu" class="tour-modal">
+        <p class="tour-desc">Hit the Refresh button to update your profile with your latest Starred playlist! Interested in learning more about Harmonize? Click the info button or email the team.</p>
+        <ul class="tour-buttons">
+            <li class="tour-done"><button class="done">Done</button></li>
+            <li class="tour-dismiss"><button class="dismiss">Dismiss all tips</button></li>
+        </ul>
+    </div>
+
+    <div id="about">
+        <span class="about-title">Hey there, fellow music lover.</span>
+        <p class="about-desc">There’s a lot of information about the music you listen to Spotify isn’t shown.<br>
+        We created Harmonize to  share it with you.<br>
+        Harmonize visualizes your Spotify profile to create your musical fingerprint: the unique combination of your music listening preferences.<br>
+        Through Harmonize, discover genres you didn’t know you liked, view your friends’ music preferences, and discover new music callibrated to your musical fingerprint.</p>
+    </div>
+
+    <!-- upon pulse click, hide modal --> 
+    <script type="text/javascript" charset="utf-8">
+        $("#tour-search").hide();
+        $("#tour-stats").hide();
+        $("#tour-vis").hide();
+        $("#tour-menu").hide();
+        $("#about").hide();
+    </script>
+
 </body>
 </html>
